@@ -12,8 +12,10 @@ static char log_level[3];
 
 extern "C" {
 
-    #include "lkmpg/hello-1.h"
-    #include "linux/kern_levels.h"
+    #include "hello-1/hello-1.h"
+    #define __init
+    #define __exit
+    #include "hello-2/hello-2.h"
 
     /** Kernel function stubs */
 
@@ -28,7 +30,7 @@ extern "C" {
 
 }
 
-TEST_GROUP(hello_1)
+TEST_GROUP(hello)
 {
     void setup()
     {
@@ -37,16 +39,30 @@ TEST_GROUP(hello_1)
     }
 };
 
-TEST(hello_1, init_module)
+TEST(hello, hello_1_init_module)
 {
     LONGS_EQUAL(0, init_module());
     STRCMP_EQUAL(KERN_INFO, log_level);
     STRCMP_EQUAL("Hello world 1.\n", log_buffer);
 }
 
-TEST(hello_1, cleanup_module)
+TEST(hello, hello_1_cleanup_module)
 {
     cleanup_module();
+    STRCMP_EQUAL(KERN_INFO, log_level);
+    STRCMP_EQUAL("Goodbye world 1.\n", log_buffer);
+}
+
+TEST(hello, hello_2_init)
+{
+    LONGS_EQUAL(0, hello_2_init());
+    STRCMP_EQUAL(KERN_INFO, log_level);
+    STRCMP_EQUAL("Hello world 1.\n", log_buffer);
+}
+
+TEST(hello, hello_2_exit)
+{
+    hello_2_exit();
     STRCMP_EQUAL(KERN_INFO, log_level);
     STRCMP_EQUAL("Goodbye world 1.\n", log_buffer);
 }
