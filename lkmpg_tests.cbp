@@ -11,6 +11,25 @@
 				<Option object_output="out" />
 				<Option type="1" />
 			</Target>
+			<Option compiler="gcc" />
+			<Compiler>
+				<Add option="-Wextra" />
+				<Add option="-Wall" />
+				<Add option="-g" />
+				<Add option="-Werror" />
+				<Add directory="/usr/local/include" />
+				<Add directory="/usr/src/linux/include" />
+			</Compiler>
+			<Linker>
+				<Add library="CppUTest" />
+				<Add library="CppUTestExt" />
+				<Add library="lkmpg/hello-1.o" />
+			</Linker>
+			<ExtraCommands>
+				<Add before="cd lkmpg &amp;&amp; make &amp;&amp; cd .." />
+				<Add after="./$(PROJECT_NAME)" />
+				<Mode after="always" />
+			</ExtraCommands>
 		</Build>
 		<Unit filename="lkmpg/hello-1.c">
 			<Option compilerVar="CC" />
