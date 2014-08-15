@@ -1,7 +1,12 @@
 /**
-  * hello-2.h
+  * hello-3.h
   */
 
-int __init hello_2_init(void);
-void __exit hello_2_exit(void);
+#include <linux/kern_levels.h> /* Needed for KERN_INFO */
+
+/** This is what these init and exit functions will look like
+  * after application of the macros
+  */
+int init_module(void);
+void cleanup_module(void);
 

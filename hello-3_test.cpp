@@ -39,18 +39,18 @@ TEST_GROUP(hello)
     }
 };
 
-TEST(hello, hello_2_init_module)
+TEST(hello, hello_3_init_module)
 {
     LONGS_EQUAL(0, init_module());
     STRCMP_EQUAL(KERN_INFO, log_level);
-    STRCMP_EQUAL("Hello, world 2\n", log_buffer);
+    STRCMP_EQUAL("Hello, world 3\n", log_buffer);
 }
 
-TEST(hello, hello_2_exit_module)
+TEST(hello, hello_3_exit_module)
 {
     cleanup_module();
     STRCMP_EQUAL(KERN_INFO, log_level);
-    STRCMP_EQUAL("Goodbye, world 2\n", log_buffer);
+    STRCMP_EQUAL("Goodbye, world 3\n", log_buffer);
 }
 
 int main(int ac, char** av)
