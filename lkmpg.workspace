@@ -2,6 +2,7 @@
 <CodeBlocks_workspace_file>
 	<Workspace title="Workspace">
 		<Project filename="01_hello-1_test.cbp" />
-		<Project filename="01_hello-2_test.cbp" active="1" />
+		<Project filename="02_hello-2_test.cbp" />
+		<Project filename="03_hello-2_test.cbp" active="1" />
 	</Workspace>
 </CodeBlocks_workspace_file>

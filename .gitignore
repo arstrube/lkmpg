@@ -11,4 +11,4 @@
 *.mod
 *.mod.c
 *.order
-lkmpg_tests
+hello-?_test
