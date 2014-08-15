@@ -1,0 +1,8 @@
+*.stackdump
+*.depend
+*.layout
+*.7z
+*.exe
+/out
+*.o
+*.ko

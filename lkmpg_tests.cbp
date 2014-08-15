@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="lkmpg_tests" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="$(PROJECT_NAME)" prefix_auto="1" extension_auto="1" />
+				<Option object_output="out" />
+				<Option type="1" />
+			</Target>
+		</Build>
+		<Unit filename="lkmpg/hello-1.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="lkmpg/hello-1.h" />
+		<Unit filename="lkmpg/Makefile" />
+		<Unit filename="lkmpg_tests.cpp" />
+		<Unit filename="README" />
+		<Extensions>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

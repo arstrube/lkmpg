@@ -1,0 +1,13 @@
+MISCELLANEOUS TESTS RELATING TO CPPUTEST
+
+Kernel module development examples from 
+
+The Linux Kernel Module Development Guide
+
+found at:
+
+http://www.tldp.org/LDP/lkmpg/2.6/html/lkmpg.html
+
+Test-driven with CppUTest.
+
+(c) 2014 Arnd R. Strube
