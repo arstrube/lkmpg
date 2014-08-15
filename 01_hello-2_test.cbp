@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="lkmpg_tests" />
+		<Option title="hello-2_test" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -24,23 +24,14 @@
 		<Linker>
 			<Add library="CppUTest" />
 			<Add library="CppUTestExt" />
-			<Add library="hello-1/hello-1.o" />
 			<Add library="hello-2/hello-2.o" />
 		</Linker>
 		<ExtraCommands>
-			<Add before="cd hello-1 &amp;&amp; make &amp;&amp; cd .." />
 			<Add before="cd hello-2 &amp;&amp; make &amp;&amp; cd .." />
 			<Add after="./$(PROJECT_NAME)" />
 			<Mode after="always" />
 		</ExtraCommands>
 		<Unit filename="README" />
-		<Unit filename="hello-1/Makefile" />
-		<Unit filename="hello-1/hello-1.c">
-			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="hello-1/hello-1.h" />
 		<Unit filename="hello-2/Makefile" />
 		<Unit filename="hello-2/hello-2.c">
 			<Option compilerVar="CC" />
@@ -48,7 +39,7 @@
 			<Option link="0" />
 		</Unit>
 		<Unit filename="hello-2/hello-2.h" />
-		<Unit filename="lkmpg_tests.cpp" />
+		<Unit filename="hello-2_test.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
