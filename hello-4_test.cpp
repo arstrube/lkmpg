@@ -1,4 +1,4 @@
-/** KernelModuleTests.cpp */
+/** hello-4_test.cpp */
 
 #include "CppUTest/CommandLineTestRunner.h"
 #include "CppUTest/TestHarness.h"
@@ -12,9 +12,6 @@ static char log_level[3];
 
 extern "C" {
 
-    #include "hello-1/hello-1.h"
-    #define __init
-    #define __exit
     #include "hello-4/hello-4.h"
 
     /** Kernel function stubs */

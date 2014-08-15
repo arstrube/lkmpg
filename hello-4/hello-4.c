@@ -1,6 +1,5 @@
 /**
- *  hello-2.c - Demonstrating the module_init() and module_exit() macros.
- *  This is preferred over using init_module() and cleanup_module().
+ *  hello-4.c - Demonstrates module documentation.
  */
 #include <linux/module.h>      /* Needed by all modules */
 #include <linux/kern_levels.h> /* Needed for KERN_INFO */
