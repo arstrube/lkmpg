@@ -12,10 +12,7 @@ static char log_level[3];
 
 extern "C" {
 
-    #include "hello-1/hello-1.h"
-    #define __init
-    #define __exit
-    #include "hello-2/hello-2.h"
+    #include "hello-3/hello-3.h"
 
     /** Kernel function stubs */
 

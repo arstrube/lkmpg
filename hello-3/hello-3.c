@@ -1,9 +1,11 @@
-/*
- *  hello-3.c - Illustrating the __init, __initdata and __exit macros.
- */
+/**
+  *  hello-3.c - Illustrating the __init, __initdata and __exit macros.
+  */
+
 #include <linux/module.h>      /* Needed by all modules */
 #include <linux/kern_levels.h> /* Needed for KERN_INFO */
 #include <linux/init.h>	       /* Needed for the macros */
+#include "hello-3.h"           /* Make sure this is okay */
 
 static int hello3_data __initdata = 3;
 

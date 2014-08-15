@@ -5,6 +5,7 @@
 #include <linux/module.h>      /* Needed by all modules */
 #include <linux/kern_levels.h> /* Needed for KERN_INFO */
 #include <linux/init.h>	       /* Needed for the macros */
+#include "hello-5.h"           /* Make sure this is okay */
 
 static int __init hello_2_init(void)
 {
