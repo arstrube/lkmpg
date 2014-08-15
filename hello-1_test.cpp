@@ -53,20 +53,6 @@ TEST(hello, hello_1_cleanup_module)
     STRCMP_EQUAL("Goodbye world 1.\n", log_buffer);
 }
 
-TEST(hello, hello_2_init)
-{
-    LONGS_EQUAL(0, hello_2_init());
-    STRCMP_EQUAL(KERN_INFO, log_level);
-    STRCMP_EQUAL("Hello world 1.\n", log_buffer);
-}
-
-TEST(hello, hello_2_exit)
-{
-    hello_2_exit();
-    STRCMP_EQUAL(KERN_INFO, log_level);
-    STRCMP_EQUAL("Goodbye world 1.\n", log_buffer);
-}
-
 int main(int ac, char** av)
 {
 	return CommandLineTestRunner::RunAllTests(ac, av);
