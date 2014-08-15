@@ -6,3 +6,9 @@
 /out
 *.o
 *.ko
+*.cmd
+*.symvers
+*.mod
+*.mod.c
+*.order
+lkmpg_tests
