@@ -28,7 +28,7 @@ extern "C" {
 
 }
 
-TEST_GROUP(hello-1)
+TEST_GROUP(hello_1)
 {
     void setup()
     {
@@ -37,14 +37,14 @@ TEST_GROUP(hello-1)
     }
 };
 
-TEST(hello-1, init_module)
+TEST(hello_1, init_module)
 {
     LONGS_EQUAL(0, init_module());
     STRCMP_EQUAL(KERN_INFO, log_level);
     STRCMP_EQUAL("Hello world 1.\n", log_buffer);
 }
 
-TEST(hello-1, cleanup_module)
+TEST(hello_1, cleanup_module)
 {
     cleanup_module();
     STRCMP_EQUAL(KERN_INFO, log_level);
