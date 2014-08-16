@@ -25,10 +25,10 @@
 			<Add library="CppUTest" />
 			<Add library="CppUTestExt" />
 			<Add library="hello-5/hello-5.o" />
-			<Add library="kernel_stubs/kernel_stubs.o" />
+			<Add library="stubs/kernel_stubs.o" />
 		</Linker>
 		<ExtraCommands>
-			<Add before="cd kernel_stubs &amp;&amp; make &amp; cd .." />
+			<Add before="cd stubs &amp;&amp; make &amp; cd .." />
 			<Add before="cd hello-5 &amp;&amp; make &amp;&amp; cd .." />
 			<Add after="./$(PROJECT_NAME)" />
 			<Mode after="always" />
@@ -42,11 +42,12 @@
 		</Unit>
 		<Unit filename="hello-5/hello-5.h" />
 		<Unit filename="hello-5_test.cpp" />
-		<Unit filename="kernel_stubs/Makefile" />
-		<Unit filename="kernel_stubs/kernel_stubs.cpp">
+		<Unit filename="stubs/kernel_stubs.c">
+			<Option compilerVar="CC" />
 			<Option compile="0" />
 			<Option link="0" />
 		</Unit>
+		<Unit filename="stubs/user_stubs.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

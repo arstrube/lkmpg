@@ -46,7 +46,7 @@ TEST(hello, hello_2_init_module)
 
 TEST(hello, hello_2_exit_module)
 {
- //   cleanup_module();
+    cleanup_module();
     STRCMP_EQUAL(KERN_INFO, log_level);
     STRCMP_EQUAL("Goodbye, world 5\n", log_buffer);
 }

@@ -1,3 +1,5 @@
+EXTRA_CFLAGS += -g -Werror -Wextra -Wno-unused-parameter
+
 obj-m += kernel_stubs.o
 
 all:
