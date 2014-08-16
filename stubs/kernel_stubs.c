@@ -16,15 +16,25 @@
  *  Kernel function stubs
  */
 
+bool my_isdigit(char ch)
+{
+    return '0' <= ch && '9' >= ch;
+}
+
+bool my_isspace(char ch)
+{
+    return (ch == ' ') || (0x08 < ch && 0x0E > ch);
+}
+
 int my_atoi(const char* str)
 {
-    while (isSpace(*str)) str++;
+    while (my_isspace(*str)) str++;
 
     char first_char = *str;
     if (first_char == '-' || first_char == '+') str++;
 
     int  result = 0;
-    for(; isDigit(*str); str++)
+    for(; my_isdigit(*str); str++)
     {
         result *= 10;
         result += *str - '0';
