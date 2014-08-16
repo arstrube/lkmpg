@@ -20,6 +20,7 @@
 			<Add option="-Werror" />
 			<Add directory="/usr/local/include" />
 			<Add directory="/usr/src/linux/include" />
+			<Add directory="." />
 		</Compiler>
 		<Linker>
 			<Add library="CppUTest" />
@@ -48,6 +49,7 @@
 			<Option link="0" />
 		</Unit>
 		<Unit filename="stubs/user_stubs.cpp" />
+		<Unit filename="stubs/user_stubs.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

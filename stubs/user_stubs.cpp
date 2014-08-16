@@ -13,7 +13,7 @@ class TestPlugin; /// Should be in PlatformSpecificFuntions.h
 #include "CppUTest/PlatformSpecificFunctions.h"
 
 
-#define NBUF 5096L
+#define NBUF 10000L
 static char log_buffer[NBUF];
 static char * buffer_ptr = log_buffer;
 static char log_level[3];
@@ -23,17 +23,29 @@ extern "C" {
     int printk (const char * fmt, ...)
     {
         va_list args;
+        va_start(args, fmt);
         SimpleString::StrNCpy(log_level, fmt, 2);
         fmt += 2;
-        va_start(args, fmt);
-        return PlatformSpecificVSNprintf(log_buffer, NBUF, fmt, args);
+        size_t fmt_size = SimpleString::StrLen(fmt);
+        size_t buf_size = SimpleString::StrLen(log_buffer);
+        int result = -1;
+        if(NBUF > fmt_size + buf_size) {
+            result = PlatformSpecificVSNprintf(buffer_ptr, fmt_size+1, fmt, args);
+            buffer_ptr += fmt_size;
+        }
+        return result;
     }
 
 }
 
-char* printk_get(void)
+char* printk_get_message(void)
 {
     return log_buffer;
+}
+
+char* printk_get_loglevel(void)
+{
+    return log_level;
 }
 
 void printk_reset(void) {
@@ -50,4 +62,11 @@ int test_printf (const char * fmt, ...)
     va_list args;
     va_start(args, fmt);
     return PlatformSpecificVSNprintf(log_buffer, NBUF, fmt, args);
+}
+
+int test_snprintf (char* buf, unsigned long n, const char * fmt,...)
+{
+    va_list args;
+    va_start(args, fmt);
+    return PlatformSpecificVSNprintf(buf, n, fmt, args);
 }
