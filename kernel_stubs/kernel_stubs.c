@@ -28,12 +28,28 @@ int printk (const char * fmt, ...)
     return vsnprintf(log_buffer, NBUF, fmt, args);
 }
 
-struct kernel_param_ops param_array_ops;
-struct kernel_param_ops param_ops_charp;
-struct kernel_param_ops param_ops_long;
-struct kernel_param_ops param_ops_int;
-struct kernel_param_ops param_ops_short;
-struct kernel_param_ops aram_ops_int;
+int set_func(const char *val, const struct kernel_param *kp)
+{
+    (void) val;
+    (void) kp;
+    return 0;
+}
+
+int get_func(char *buffer, const struct kernel_param *kp)
+{
+    (void) buffer;
+    (void) kp;
+    return 0;
+}
+
+void free_func(void * m) { (void)m; }
+
+struct kernel_param_ops param_array_ops = { .set = set_func, .get = get_func, .free = free_func };
+struct kernel_param_ops param_ops_charp = { .set = set_func, .get = get_func, .free = free_func };
+struct kernel_param_ops param_ops_long = { .set = set_func, .get = get_func, .free = free_func };
+struct kernel_param_ops param_ops_int = { .set = set_func, .get = get_func, .free = free_func };
+struct kernel_param_ops param_ops_short = { .set = set_func, .get = get_func, .free = free_func };
+struct kernel_param_ops aram_ops_int = { .set = set_func, .get = get_func, .free = free_func };
 
 /**
  *  Strictly speaking, not a kernel stub, but we'll use it a lot

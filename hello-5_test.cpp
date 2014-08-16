@@ -28,7 +28,7 @@ TEST_GROUP(hello)
 
 TEST(hello, hello_2_init_module)
 {
- //   LONGS_EQUAL(0, init_module());
+    LONGS_EQUAL(0, init_module());
     STRCMP_EQUAL(KERN_INFO, log_level);
     STRCMP_CONTAINS("Hello, world 5\n=============\n", log_buffer);
 	STRCMP_CONTAINS("myshort is a short integer: 1\n", log_buffer);
@@ -46,7 +46,7 @@ TEST(hello, hello_2_init_module)
 
 TEST(hello, hello_2_exit_module)
 {
-//    cleanup_module();
+ //   cleanup_module();
     STRCMP_EQUAL(KERN_INFO, log_level);
     STRCMP_EQUAL("Goodbye, world 5\n", log_buffer);
 }
