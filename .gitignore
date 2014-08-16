@@ -12,3 +12,4 @@
 *.mod.c
 *.order
 hello-?_test
+/startstop_test
