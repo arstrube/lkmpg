@@ -43,6 +43,7 @@
 		</Unit>
 		<Unit filename="hello-5/hello-5.h" />
 		<Unit filename="hello-5_test.cpp" />
+		<Unit filename="stubs/Makefile" />
 		<Unit filename="stubs/kernel_stubs.c">
 			<Option compilerVar="CC" />
 			<Option compile="0" />

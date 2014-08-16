@@ -1,4 +1,4 @@
-EXTRA_CFLAGS += -g -Werror -Wextra -Wno-unused-parameter
+EXTRA_CFLAGS += -g -Werror -Wextra -Wno-unused-parameter -Wno-declaration-after-statement
 
 obj-m += kernel_stubs.o
 
