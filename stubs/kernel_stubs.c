@@ -16,6 +16,23 @@
  *  Kernel function stubs
  */
 
+int my_atoi(const char* str)
+{
+    while (isSpace(*str)) str++;
+
+    char first_char = *str;
+    if (first_char == '-' || first_char == '+') str++;
+
+    int  result = 0;
+    for(; isDigit(*str); str++)
+    {
+        result *= 10;
+        result += *str - '0';
+    }
+    return (first_char == '-') ? -result : result;
+}
+
+
 int set_func(const char *val, const struct kernel_param *kp)
 {
     (void) val;
@@ -25,7 +42,7 @@ int set_func(const char *val, const struct kernel_param *kp)
 
 int set_short(const char *val, const struct kernel_param *kp)
 {
-    *(short*)kp->arg = (short)simple_strtol(val, NULL, 10);
+    *(short*)kp->arg = (short)my_atoi(val);
     return 0;
 }
 
