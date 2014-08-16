@@ -6,13 +6,16 @@
  *  - can thus include StdCLib and any of CppUTest.
  */
 
+#include "stubs/user_stubs.h"
 #include <cstdarg>
 #include "CppUTest/SimpleString.h"
 class TestPlugin; /// Should be in PlatformSpecificFuntions.h
 #include "CppUTest/PlatformSpecificFunctions.h"
 
+
 #define NBUF 5096L
 static char log_buffer[NBUF];
+static char * buffer_ptr = log_buffer;
 static char log_level[3];
 
 extern "C" {
@@ -26,6 +29,16 @@ extern "C" {
         return PlatformSpecificVSNprintf(log_buffer, NBUF, fmt, args);
     }
 
+}
+
+char* printk_get(void)
+{
+    return log_buffer;
+}
+
+void printk_reset(void) {
+    buffer_ptr = log_buffer;
+    *buffer_ptr = 0;
 }
 
 /**
