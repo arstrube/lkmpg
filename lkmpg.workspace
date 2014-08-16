@@ -6,5 +6,6 @@
 		<Project filename="03_hello-3_test.cbp" />
 		<Project filename="04_hello-4_test.cbp" active="1" />
 		<Project filename="05_hello-5_test.cbp" />
+		<Project filename="06_startstop_test.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>
