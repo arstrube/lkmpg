@@ -38,6 +38,13 @@ TEST(hello, hello_2_init_module)
 	STRCMP_CONTAINS("got 0 arguments for myintArray.\n", printk_get_message());
 }
 
+TEST(hello, hello_2_init_module_with_short_arg)
+{
+    LONGS_EQUAL(0, init_module());
+    STRCMP_EQUAL(KERN_INFO, printk_get_loglevel());
+	STRCMP_CONTAINS("myshort is a short integer: 555\n", printk_get_message());
+}
+
 TEST(hello, hello_2_exit_module)
 {
     cleanup_module();
