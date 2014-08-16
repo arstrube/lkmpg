@@ -28,7 +28,7 @@ TEST(hello, hello_2_init_module)
 	STRCMP_CONTAINS("myshort is a short integer: 1\n", printk_get_message());
 	STRCMP_CONTAINS("myint is an integer: 420\n", printk_get_message());
 	STRCMP_CONTAINS("mylong is a long integer: 9999\n", printk_get_message());
-	STRCMP_CONTAINS("mystring is a string: \"bla\"\n", printk_get_message());
+	STRCMP_CONTAINS("mystring is a string: blah\n", printk_get_message());
 	for (int i = 0; i < 2; i++)
 	{
 	    char expected[30];

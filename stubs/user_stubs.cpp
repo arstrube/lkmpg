@@ -22,18 +22,17 @@ extern "C" {
 
     int printk (const char * fmt, ...)
     {
-        va_list args;
-        va_start(args, fmt);
         SimpleString::StrNCpy(log_level, fmt, 2);
         fmt += 2;
-        size_t fmt_size = SimpleString::StrLen(fmt);
-        size_t buf_size = SimpleString::StrLen(log_buffer);
-        int result = -1;
-        if(NBUF > fmt_size + buf_size) {
-            result = PlatformSpecificVSNprintf(buffer_ptr, fmt_size+1, fmt, args);
-            buffer_ptr += fmt_size;
+        size_t reslen;
+        size_t buflen = SimpleString::StrLen(log_buffer);
+        if(NBUF > SimpleString::StrLen(fmt) + buflen) {
+            va_list args;
+            va_start(args, fmt);
+            reslen = PlatformSpecificVSNprintf(buffer_ptr, NBUF-buflen, fmt, args);
+            buffer_ptr += reslen;
         }
-        return result;
+        return reslen;
     }
 
 }
