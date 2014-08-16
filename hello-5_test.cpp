@@ -38,6 +38,8 @@ TEST(hello, hello_2_init_module)
 	STRCMP_CONTAINS("got 0 arguments for myintArray.\n", printk_get_message());
 }
 
+short *__check_myshort(void);
+
 TEST(hello, hello_2_init_module_with_short_arg)
 {
     LONGS_EQUAL(0, init_module());
