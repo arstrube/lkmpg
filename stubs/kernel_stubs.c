@@ -88,3 +88,19 @@ struct kernel_param_ops param_ops_short =
     .get = get_short,
     .free = free_func
 };
+
+void module_put(struct module *module) {}
+bool try_module_get(struct module *module) { return 0; }
+void __put_user_1(int a, int b) {}
+int _cond_resched(void) { return 0; }
+
+int __register_chrdev(unsigned int major, unsigned int baseminor,
+    unsigned int count, const char *name,
+    const struct file_operations *fops)
+{
+    return 0;
+}
+
+void __unregister_chrdev(unsigned int major, unsigned int baseminor,
+    unsigned int count, const char *name) {}
+

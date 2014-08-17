@@ -14,6 +14,17 @@
 #define BUF_LEN 80		/* Max length of the message from the device */
 
 /**
+ *  Private Prototypes
+ */
+
+#ifndef UNIT_TEST
+ PRIVATE int device_open(struct inode *, struct file *);
+ PRIVATE int device_release(struct inode *, struct file *);
+ PRIVATE ssize_t device_read(struct file *, char *, size_t, loff_t *);
+ PRIVATE ssize_t device_write(struct file *, const char *, size_t, loff_t *);
+#endif
+
+/**
  *  Global variables are declared as static, so are global within the file.
  */
 
@@ -68,9 +79,9 @@ void cleanup_module(void)
 
 /**
  *  Called when a process tries to open the device file, like
- *  "cat /dev/mycharfile"
+ *           "cat /dev/mycharfile"
  */
-static int device_open(struct inode *inode, struct file *file)
+PRIVATE int device_open(struct inode *inode, struct file *file)
 {
 	static int counter = 0;
 
@@ -88,7 +99,7 @@ static int device_open(struct inode *inode, struct file *file)
 /*
  * Called when a process closes the device file.
  */
-static int device_release(struct inode *inode, struct file *file)
+PRIVATE int device_release(struct inode *inode, struct file *file)
 {
 	Device_Open--;		/* We're now ready for our next caller */
 
@@ -105,7 +116,7 @@ static int device_release(struct inode *inode, struct file *file)
  *  Called when a process, which already opened the dev file, attempts to
  *  read from it.
  */
-static ssize_t device_read(struct file *filp,	/* see include/linux/fs.h   */
+PRIVATE ssize_t device_read(struct file *filp,	/* see include/linux/fs.h   */
 			   char *buffer,	/* buffer to fill with data */
 			   size_t length,	/* length of the buffer     */
 			   loff_t * offset)
@@ -148,7 +159,7 @@ static ssize_t device_read(struct file *filp,	/* see include/linux/fs.h   */
 /**
  *  Called when a process writes to dev file: echo "hi" > /dev/hello
  */
-static ssize_t
+PRIVATE ssize_t
 device_write(struct file *filp, const char *buff, size_t len, loff_t * off)
 {
 	printk(KERN_ALERT "Sorry, this operation isn't supported.\n");
