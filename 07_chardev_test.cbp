@@ -18,6 +18,7 @@
 			<Add option="-Wall" />
 			<Add option="-g" />
 			<Add option="-Werror" />
+			<Add option="-DUNIT_TEST" />
 			<Add directory="/usr/local/include" />
 			<Add directory="/usr/src/linux/include" />
 			<Add directory="." />
@@ -25,9 +26,9 @@
 		<Linker>
 			<Add library="CppUTest" />
 			<Add library="CppUTestExt" />
-			<Add library="startstop/start.o" />
-			<Add library="startstop/stop.o" />
+			<Add library="chardev/chardev.ko" />
 			<Add library="stubs/kernel_stubs.o" />
+			<Add library="chardev/chardev_stubs.o" />
 		</Linker>
 		<ExtraCommands>
 			<Add before="cd stubs &amp;&amp; make &amp; cd .." />
@@ -43,7 +44,13 @@
 			<Option link="0" />
 		</Unit>
 		<Unit filename="chardev/chardev.h" />
+		<Unit filename="chardev/chardev_stubs.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
 		<Unit filename="chardev_test.cpp" />
+		<Unit filename="stubs/Makefile" />
 		<Unit filename="stubs/kernel_stubs.c">
 			<Option compilerVar="CC" />
 			<Option compile="0" />
