@@ -5,6 +5,10 @@
  #ifndef USER_STUBS_H
  #define USER_STUBS_H
 
+/**
+ *  User stub helpers
+ */
+
 char* printk_get_loglevel(void);
 char* printk_get_message(void);
 void  printk_reset(void);

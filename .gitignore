@@ -12,3 +12,4 @@
 *.mod.c
 *.order
 *_test
+.tmp*

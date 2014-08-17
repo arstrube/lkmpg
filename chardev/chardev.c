@@ -7,11 +7,11 @@
 #include <linux/init.h>	       /* Needed for the macros */
 #include <linux/fs.h>
 #include "chardev.h"           /* Make sure this is okay */
-#include <asm/uaccess.h>	   /* for put_user */
+#include <asm/uaccess.h>       /* for put_user */
 
 #define SUCCESS 0
-#define DEVICE_NAME "chardev"	/* Dev name as it appears in /proc/devices   */
-#define BUF_LEN 80		/* Max length of the message from the device */
+#define DEVICE_NAME "chardev"  /* Dev name as it appears in /proc/devices   */
+#define BUF_LEN 80             /* Max length of the message from the device */
 
 /**
  *  Private Prototypes
@@ -28,10 +28,9 @@
  *  Global variables are declared as static, so are global within the file.
  */
 
-static int Major;		/* Major number assigned to our device driver */
-static int Device_Open = 0;	/* Is device open?
-				             * Used to prevent multiple access to device */
-static char msg[BUF_LEN];	/* The msg the device will give when asked */
+static int Major;           /* Major number assigned to our device driver */
+static int Device_Open = 0; /* Is device open? Used to prevent multiple access to device */
+static char msg[BUF_LEN];   /* The msg the device will give when asked */
 static char *msg_Ptr;
 
 static struct file_operations fops = {
@@ -46,11 +45,11 @@ static struct file_operations fops = {
  */
 int init_module(void)
 {
-        Major = register_chrdev(0, DEVICE_NAME, &fops);
+    Major = register_chrdev(0, DEVICE_NAME, &fops);
 
-	if (Major < 0) {
-	  printk(KERN_ALERT "Registering char device failed with %d\n", Major);
-	  return Major;
+    if (Major < 0) {
+	    printk(KERN_ALERT "Registering char device failed with %d\n", Major);
+	    return Major;
 	}
 
 	printk(KERN_INFO "I was assigned major number %d. To talk to\n", Major);

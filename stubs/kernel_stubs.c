@@ -5,12 +5,17 @@
  *  - cannot use C++, StdCLib or CppUTest
  */
 
-/// TODO: Make printk() append to buffer
-
 #include <stdarg.h>
 #include <linux/string.h>
 #include <linux/module.h>
 #include <linux/moduleparam.h>
+#include "kernel_stubs.h"
+
+/**
+ *  Local data for stubs
+ */
+
+static int register_chrdev_result = 0;
 
 /**
  *  Kernel function stubs
@@ -94,13 +99,20 @@ bool try_module_get(struct module *module) { return 0; }
 void __put_user_1(int a, int b) {}
 int _cond_resched(void) { return 0; }
 
+void register_chrdev_result_set(int result)
+{
+    register_chrdev_result = result;
+}
 int __register_chrdev(unsigned int major, unsigned int baseminor,
     unsigned int count, const char *name,
     const struct file_operations *fops)
 {
-    return 0;
+    return register_chrdev_result;
 }
 
 void __unregister_chrdev(unsigned int major, unsigned int baseminor,
-    unsigned int count, const char *name) {}
+    unsigned int count, const char *name)
+{
+    printk(KERN_INFO "__unregister_chrdev(%d, %d, %d, %s) called\n", major, baseminor, count, name);
+}
 
