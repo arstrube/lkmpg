@@ -100,7 +100,7 @@ PRIVATE int device_open(struct inode *inode, struct file *file)
  */
 PRIVATE int device_release(struct inode *inode, struct file *file)
 {
-	Device_Open--;		/* We're now ready for our next caller */
+	if (Device_Open) Device_Open--; /* We're now ready for our next caller */
 
 	/*
 	 * Decrement the usage count, or else once you opened the file, you'll

@@ -8,5 +8,6 @@
 CHARDEV_WRAPPER_H
 
 int device_open_wrapper(void);
+int device_release_wrapper(void);
 
 #endif

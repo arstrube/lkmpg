@@ -46,25 +46,21 @@ TEST(chardev, chardev_init_module_failure)
     result = -1;
     register_chrdev_result_set(&result);
     LONGS_EQUAL(-1, init_module());
-    STRCMP_EQUAL(KERN_ALERT, printk_get_loglevel());
-	STRCMP_CONTAINS("Registering char device failed with -1\n", printk_get_message());
-}
-
-TEST(chardev, chardev_device_open_failure)
-{
-    register_chrdev_result_set(&result);
- //   LONGS_EQUAL(0, device_open_wrapper());
-    LONGS_EQUAL(EBUSY, device_open_wrapper());
-    STRCMP_EQUAL(KERN_ALERT, printk_get_loglevel());
-	STRCMP_CONTAINS("Registering char device failed with -16\n", printk_get_message());
 }
 
 TEST(chardev, chardev_device_open_success)
 {
-    register_chrdev_result_set(&result);
+    device_release_wrapper();
     LONGS_EQUAL(0, device_open_wrapper());
-    STRCMP_EQUAL(KERN_INFO, printk_get_loglevel());
-	STRCMP_CONTAINS("Registering char device failed with -1\n", printk_get_message());
+ //   STRCMP_EQUAL(KERN_INFO, printk_get_loglevel());
+//	STRCMP_CONTAINS("I already told you 1 times Hello world!\n", printk_get_message());
+}
+
+TEST(chardev, chardev_device_open_failure)
+{
+    device_release_wrapper();
+    LONGS_EQUAL(0, device_open_wrapper());
+    LONGS_EQUAL(EBUSY, device_open_wrapper());
 }
 
 TEST(chardev, chardev_exit_module)

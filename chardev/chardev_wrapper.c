@@ -9,29 +9,20 @@
 #include "chardev.h"           /* Make sure this is okay */
 #include "chardev_wrapper.h"   /* for testing */
 
+static struct inode node;
+static struct file file;
+
 int device_open_wrapper(void)
 {
-    struct inode node;
-    struct file file;
     return device_open(&node, &file);
 }
-/*
- * Called when a process closes the device file.
- */
+
+int device_release_wrapper(void)
+{
+    return device_release(&node, &file);
+}
 
 #if 0
-PRIVATE int device_release(struct inode *inode, struct file *file)
-{
-	Device_Open--;		/* We're now ready for our next caller */
-
-	/*
-	 * Decrement the usage count, or else once you opened the file, you'll
-	 * never get get rid of the module.
-	 */
-	module_put(THIS_MODULE);
-
-	return 0;
-}
 
 /**
  *  Called when a process, which already opened the dev file, attempts to
