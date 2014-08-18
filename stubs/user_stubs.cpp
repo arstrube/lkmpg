@@ -9,7 +9,6 @@
 #include "stubs/user_stubs.h"
 #include <cstdarg>
 #include "CppUTest/SimpleString.h"
-class TestPlugin; /// Should be in PlatformSpecificFuntions.h
 #include "CppUTest/PlatformSpecificFunctions.h"
 
 

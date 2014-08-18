@@ -1,20 +1,23 @@
-/** hello-5_test.cpp */
-
-/// TODO: Make printk() append to buffer
+/**
+ * chardev_test.cpp - Test the LKMPG chardev program
+ */
 
 #include "CppUTest/CommandLineTestRunner.h"
 #include "CppUTest/TestHarness.h"
-#include "CppUTest/PlatformSpecificFunctions.h"
 #include "stubs/user_stubs.h"
 
 extern "C" {
     #include <linux/kern_levels.h> /* Needed for KERN_INFO */
     #include "chardev/chardev.h"
+    #include "chardev/chardev_wrapper.h"
     #include "stubs/kernel_stubs.h"
 }
 
+#define EBUSY -16
+
 TEST_GROUP(chardev)
 {
+    int result;
     void setup()
     {
         printk_reset();
@@ -23,7 +26,8 @@ TEST_GROUP(chardev)
 
 TEST(chardev, chardev_init_module_success)
 {
-    register_chrdev_result_set(50);
+    result = 50;
+    register_chrdev_result_set(&result);
     LONGS_EQUAL(0, init_module());
     STRCMP_EQUAL(KERN_INFO, printk_get_loglevel());
 	STRCMP_CONTAINS("I was assigned major number 50. To talk to\n", printk_get_message());
@@ -39,10 +43,28 @@ short *__check_myshort(void);
 
 TEST(chardev, chardev_init_module_failure)
 {
-    register_chrdev_result_set(-1L);
+    result = -1;
+    register_chrdev_result_set(&result);
     LONGS_EQUAL(-1, init_module());
+    STRCMP_EQUAL(KERN_ALERT, printk_get_loglevel());
+	STRCMP_CONTAINS("Registering char device failed with -1\n", printk_get_message());
+}
+
+TEST(chardev, chardev_device_open_failure)
+{
+    register_chrdev_result_set(&result);
+ //   LONGS_EQUAL(0, device_open_wrapper());
+    LONGS_EQUAL(EBUSY, device_open_wrapper());
+    STRCMP_EQUAL(KERN_ALERT, printk_get_loglevel());
+	STRCMP_CONTAINS("Registering char device failed with -16\n", printk_get_message());
+}
+
+TEST(chardev, chardev_device_open_success)
+{
+    register_chrdev_result_set(&result);
+    LONGS_EQUAL(0, device_open_wrapper());
     STRCMP_EQUAL(KERN_INFO, printk_get_loglevel());
-	STRCMP_CONTAINS("myshort is a short integer: 555\n", printk_get_message());
+	STRCMP_CONTAINS("Registering char device failed with -1\n", printk_get_message());
 }
 
 TEST(chardev, chardev_exit_module)

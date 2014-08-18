@@ -67,7 +67,7 @@ int init_module(void)
  */
 void cleanup_module(void)
 {
-	unregister_chrdev(Major, DEVICE_NAME);
+	unregister_chrdev(Major, DEVICE_NAME);  /** older version return an int */
 	// if (ret < 0)
 	//	printk(KERN_ALERT "Error in unregister_chrdev: %d\n", ret);
 }

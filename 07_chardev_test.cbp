@@ -33,7 +33,7 @@
 		<ExtraCommands>
 			<Add before="cd stubs &amp;&amp; make &amp; cd .." />
 			<Add before="cd chardev &amp;&amp; make &amp;&amp; cd .." />
-			<Add after="./$(PROJECT_NAME)" />
+			<Add after="#./$(PROJECT_NAME)" />
 			<Mode after="always" />
 		</ExtraCommands>
 		<Unit filename="README" />
@@ -44,11 +44,12 @@
 			<Option link="0" />
 		</Unit>
 		<Unit filename="chardev/chardev.h" />
-		<Unit filename="chardev/chardev_stubs.c">
+		<Unit filename="chardev/chardev_wrapper.c">
 			<Option compilerVar="CC" />
 			<Option compile="0" />
 			<Option link="0" />
 		</Unit>
+		<Unit filename="chardev/chardev_wrapper.h" />
 		<Unit filename="chardev_test.cpp" />
 		<Unit filename="stubs/Makefile" />
 		<Unit filename="stubs/kernel_stubs.c">
@@ -56,6 +57,7 @@
 			<Option compile="0" />
 			<Option link="0" />
 		</Unit>
+		<Unit filename="stubs/kernel_stubs.h" />
 		<Unit filename="stubs/user_stubs.cpp" />
 		<Unit filename="stubs/user_stubs.h" />
 		<Extensions>
