@@ -26,8 +26,7 @@ TEST_GROUP(chardev)
 
 TEST(chardev, chardev_init_module_success)
 {
-    result = 50;
-    register_chrdev_result_set(&result);
+    register_chrdev_result_set(50);
     LONGS_EQUAL(0, init_module());
     STRCMP_EQUAL(KERN_INFO, printk_get_loglevel());
 	STRCMP_CONTAINS("I was assigned major number 50. To talk to\n", printk_get_message());
@@ -43,8 +42,7 @@ short *__check_myshort(void);
 
 TEST(chardev, chardev_init_module_failure)
 {
-    result = -1;
-    register_chrdev_result_set(&result);
+    register_chrdev_result_set(-1);
     LONGS_EQUAL(-1, init_module());
 }
 

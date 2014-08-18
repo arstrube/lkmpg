@@ -11,11 +11,7 @@
 #include <linux/moduleparam.h>
 #include "kernel_stubs.h"
 
-/**
- *  Local data for stubs
- */
-
-static int register_chrdev_result = 0;
+extern int register_chrdev_result;
 
 /**
  *  Kernel function stubs
@@ -98,10 +94,6 @@ bool try_module_get(struct module *module) { return 0; }
 void __put_user_1(int a, int b) {}
 int _cond_resched(void) { return 0; }
 
-void register_chrdev_result_set(int *result)
-{
-    register_chrdev_result = *result;
-}
 int __register_chrdev(unsigned int major, unsigned int baseminor,
     unsigned int count, const char *name,
     const struct file_operations *fops)

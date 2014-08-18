@@ -11,6 +11,11 @@
 #include "CppUTest/SimpleString.h"
 #include "CppUTest/PlatformSpecificFunctions.h"
 
+int register_chrdev_result = 0;
+
+/**
+ *  Local data for stubs
+ */
 
 #define NBUF 10000L
 static char log_buffer[NBUF];
@@ -34,6 +39,11 @@ extern "C" {
         return reslen;
     }
 
+}
+
+void register_chrdev_result_set(int result)
+{
+    register_chrdev_result = result;
 }
 
 char* printk_get_message(void)

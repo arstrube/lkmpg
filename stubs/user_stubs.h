@@ -14,5 +14,6 @@ char* printk_get_message(void);
 void  printk_reset(void);
 int   test_printf (const char * fmt, ...);
 int   test_snprintf (char* buf, unsigned long n, const char * fmt,...);
+void  register_chrdev_result_set(int result);
 
 #endif
