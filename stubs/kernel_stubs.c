@@ -1,15 +1,16 @@
 /**
  *  LKMPG kernel stubs
  *  - inlcude kernel headers
+ *  - code would normally run in kernen space
  *  - must be compiled with kernel make
  *  - cannot use C++, StdCLib or CppUTest
  */
 
-#include <stdarg.h>
+#include "kernel_stubs.h"
+
 #include <linux/string.h>
 #include <linux/module.h>
 #include <linux/moduleparam.h>
-#include "kernel_stubs.h"
 
 extern int register_chrdev_result;
 
@@ -91,14 +92,15 @@ struct kernel_param_ops param_ops_short =
 
 void module_put(struct module *module) {}
 bool try_module_get(struct module *module) { return 0; }
-void __put_user_1(int a, int b) {}
 int _cond_resched(void) { return 0; }
 
 int __register_chrdev(unsigned int major, unsigned int baseminor,
     unsigned int count, const char *name,
     const struct file_operations *fops)
 {
-    return register_chrdev_result;
+    int result;
+    get_user(result, &register_chrdev_result);
+    return result;
 }
 
 void __unregister_chrdev(unsigned int major, unsigned int baseminor,

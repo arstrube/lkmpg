@@ -1,5 +1,5 @@
 /**
- *  user_stubs.h
+ *  user_stubs.h - user space stubs & helpers
  */
 
  #ifndef USER_STUBS_H

@@ -7,6 +7,7 @@
  */
 
 #include "stubs/user_stubs.h"
+
 #include <cstdarg>
 #include "CppUTest/SimpleString.h"
 #include "CppUTest/PlatformSpecificFunctions.h"
