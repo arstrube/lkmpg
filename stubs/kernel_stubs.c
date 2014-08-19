@@ -98,9 +98,7 @@ int __register_chrdev(unsigned int major, unsigned int baseminor,
     unsigned int count, const char *name,
     const struct file_operations *fops)
 {
-    int result;
-    get_user(result, &register_chrdev_result);
-    return result;
+    return register_chrdev_result; /// can't get get_user() to work here
 }
 
 void __unregister_chrdev(unsigned int major, unsigned int baseminor,
