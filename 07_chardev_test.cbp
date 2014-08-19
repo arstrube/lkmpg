@@ -27,8 +27,8 @@
 			<Add library="CppUTest" />
 			<Add library="CppUTestExt" />
 			<Add library="chardev/chardev.ko" />
-			<Add library="stubs/kernel_stubs.o" />
-			<Add library="chardev/chardev_stubs.o" />
+			<Add library="stubs/kernel.o" />
+			<Add library="chardev/chardev_wrapper.o" />
 		</Linker>
 		<ExtraCommands>
 			<Add before="cd stubs &amp;&amp; make &amp; cd .." />
@@ -52,12 +52,20 @@
 		<Unit filename="chardev/chardev_wrapper.h" />
 		<Unit filename="chardev_test.cpp" />
 		<Unit filename="stubs/Makefile" />
+		<Unit filename="stubs/getuser.S">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
 		<Unit filename="stubs/kernel_stubs.c">
 			<Option compilerVar="CC" />
 			<Option compile="0" />
 			<Option link="0" />
 		</Unit>
 		<Unit filename="stubs/kernel_stubs.h" />
+		<Unit filename="stubs/putuser.S">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
 		<Unit filename="stubs/user_stubs.cpp" />
 		<Unit filename="stubs/user_stubs.h" />
 		<Extensions>

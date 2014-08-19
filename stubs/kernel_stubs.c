@@ -92,15 +92,15 @@ struct kernel_param_ops param_ops_short =
 
 void module_put(struct module *module) {}
 bool try_module_get(struct module *module) { return 0; }
-void __put_user_1(void) {}
-int __get_user_4(void) { return 0; }
 int _cond_resched(void) { return 0; }
 
 int __register_chrdev(unsigned int major, unsigned int baseminor,
     unsigned int count, const char *name,
     const struct file_operations *fops)
 {
-    return register_chrdev_result;
+    int result;
+    get_user(result, &register_chrdev_result);
+    return result;
 }
 
 void __unregister_chrdev(unsigned int major, unsigned int baseminor,
