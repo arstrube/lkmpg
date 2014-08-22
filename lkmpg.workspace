@@ -7,6 +7,7 @@
 		<Project filename="04_hello-4_test.cbp" />
 		<Project filename="05_hello-5_test.cbp" />
 		<Project filename="06_startstop_test.cbp" />
-		<Project filename="07_chardev_test.cbp" active="1" />
+		<Project filename="07_chardev_test.cbp" />
+		<Project filename="08_putuser_test.cbp" active="1" />
 	</Workspace>
 </CodeBlocks_workspace_file>
