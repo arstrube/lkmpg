@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="chardev_test" />
+		<Option title="putuser_test" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -37,20 +37,12 @@
 			<Mode after="always" />
 		</ExtraCommands>
 		<Unit filename="README" />
-		<Unit filename="chardev/Makefile" />
-		<Unit filename="chardev/chardev.c">
+		<Unit filename="putuser/Makefile" />
+		<Unit filename="putuser/putuser.c">
 			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option link="0" />
 		</Unit>
-		<Unit filename="chardev/chardev.h" />
-		<Unit filename="chardev/chardev_wrapper.c">
-			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="chardev/chardev_wrapper.h" />
-		<Unit filename="chardev_test.cpp" />
+		<Unit filename="putuser/putuser.h" />
+		<Unit filename="putuser_test.cpp" />
 		<Unit filename="stubs/Makefile" />
 		<Unit filename="stubs/getuser.S">
 			<Option compile="0" />
