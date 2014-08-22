@@ -20,7 +20,7 @@ TEST_GROUP(chardev)
     int result;
     void setup()
     {
-        write_buffer[0] = 0;
+        read_buffer_reset();
         printk_reset();
     }
 };
@@ -52,7 +52,7 @@ TEST(chardev, chardev_device_open_success)
     device_release_wrapper();
     LONGS_EQUAL(0, device_open_wrapper());
     device_read_wrapper(); /// put mesg into buffer
-    STRCMP_EQUAL("I already told you 1 times Hello world!\n", write_buffer);
+    STRCMP_EQUAL("I already told you 1 times Hello world!\n", read_buffer_get());
 }
 
 TEST(chardev, chardev_device_open_failure)

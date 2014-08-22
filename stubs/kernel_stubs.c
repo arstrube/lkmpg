@@ -73,7 +73,6 @@ int get_func(char *buffer, const struct kernel_param *kp)
 
 int get_short(char *buffer, const struct kernel_param *kp)
 {
-    return 0;
     snprintf(buffer, 6, "%d",(short)*(short*)kp->arg);
     return 0;
 }

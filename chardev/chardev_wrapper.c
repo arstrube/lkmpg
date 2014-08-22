@@ -11,9 +11,17 @@
 
 static struct inode node;
 static struct file file;
-static char   buffer[200];
+static char   read_buffer[200];
 
-char * write_buffer = buffer;
+void read_buffer_reset(void)
+{
+    read_buffer[0] = 0;
+}
+
+char * read_buffer_get(void)
+{
+    return read_buffer;
+}
 
 int device_open_wrapper(void)
 {
@@ -27,20 +35,10 @@ int device_release_wrapper(void)
 
 int device_read_wrapper(void)
 {
-    return device_read(&file, buffer, 200, 0);
+    return device_read(&file, read_buffer, 200, 0);
 }
 
-#if 0
-}
-
-/**
- *  Called when a process writes to dev file: echo "hi" > /dev/hello
- */
-PRIVATE ssize_t
-device_write(struct file *filp, const char *buff, size_t len, loff_t * off)
+int device_write_wrapper(void)
 {
-	printk(KERN_ALERT "Sorry, this operation isn't supported.\n");
-	return -EINVAL;
+    return device_write(&file, NULL, 200, 0);
 }
-
-#endif
