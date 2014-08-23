@@ -37,8 +37,8 @@
 .text
 ENTRY(__put_user_1)
 	ENTER
+    cmp TI_addr_limit(%_ASM_BX),%_ASM_CX
 	/* This check always fails in user space */
-    /* cmp TI_addr_limit(%_ASM_BX),%_ASM_CX  */
 	/* jae bad_put_user                      */
 1:	movb %al,(%_ASM_CX)
 	xor %eax,%eax
@@ -50,7 +50,8 @@ ENTRY(__put_user_2)
 	mov TI_addr_limit(%_ASM_BX),%_ASM_BX
 	sub $1,%_ASM_BX
 	cmp %_ASM_BX,%_ASM_CX
-	jae bad_put_user
+	/* This check always fails in user space */
+	/* jae bad_put_user                      */
 2:	movw %ax,(%_ASM_CX)
 	xor %eax,%eax
 	EXIT
@@ -61,7 +62,8 @@ ENTRY(__put_user_4)
 	mov TI_addr_limit(%_ASM_BX),%_ASM_BX
 	sub $3,%_ASM_BX
 	cmp %_ASM_BX,%_ASM_CX
-	jae bad_put_user
+	/* This check always fails in user space */
+	/* jae bad_put_user                      */
 3:	movl %eax,(%_ASM_CX)
 	xor %eax,%eax
 	EXIT

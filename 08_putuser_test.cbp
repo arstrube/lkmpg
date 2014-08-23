@@ -26,9 +26,8 @@
 		<Linker>
 			<Add library="CppUTest" />
 			<Add library="CppUTestExt" />
-			<Add library="chardev/chardev.ko" />
+			<Add library="putuser/putuser_wrapper.ko" />
 			<Add library="stubs/kernel.o" />
-			<Add library="chardev/chardev_wrapper.o" />
 		</Linker>
 		<ExtraCommands>
 			<Add before="cd stubs &amp;&amp; make &amp; cd .." />
@@ -38,10 +37,12 @@
 		</ExtraCommands>
 		<Unit filename="README" />
 		<Unit filename="putuser/Makefile" />
-		<Unit filename="putuser/putuser.c">
+		<Unit filename="putuser/putuser_wrapper.c">
 			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
 		</Unit>
-		<Unit filename="putuser/putuser.h" />
+		<Unit filename="putuser/putuser_wrapper.h" />
 		<Unit filename="putuser_test.cpp" />
 		<Unit filename="stubs/Makefile" />
 		<Unit filename="stubs/getuser.S">
