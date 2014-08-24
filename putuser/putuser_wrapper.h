@@ -13,5 +13,7 @@ int put_user_wrapper_2s(short source, short *target);
 int put_user_wrapper_2u(unsigned short source, unsigned short *target);
 int put_user_wrapper_4s(long *target);
 int put_user_wrapper_4u(unsigned long *target);
+int put_user_wrapper_8s(long long *target);
+int put_user_wrapper_8u(unsigned long long *target);
 
 #endif

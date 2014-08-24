@@ -98,6 +98,8 @@ int _cond_resched(void) { return 0; }
  *  modules from user space. These macros perform no tests; hence
  *  they never return non-zero. Successful tests involving these
  *  stubs cannot guarantee correct operation of kernel code!
+ *  These stubs are for x86 32bit Linux. Alternatively, you can
+ *  link the original source, putuser.S.
  */
 
 notrace void __put_user_1(void)
@@ -120,6 +122,15 @@ notrace void __put_user_4(void)
 {
     asm(
         "movl %eax,(%ecx)\n"
+	    "xor %eax,%eax\n"
+    );
+}
+
+notrace void __put_user_8(void)
+{
+    asm(
+        "mov %eax,(%ecx)\n"
+        "movl %edx, 4(%ecx)\n"
 	    "xor %eax,%eax\n"
     );
 }

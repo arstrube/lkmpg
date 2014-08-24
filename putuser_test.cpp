@@ -72,6 +72,32 @@ TEST(putuser, put_long)
     LONGS_EQUAL(expected_long, actual);
 }
 
+long long expected_long_long; /* workaround */
+
+TEST(putuser, put_long_long)
+{
+    /* workaround because passing long as
+     * argument is not possible
+     */
+    expected_long_long = -7000000000000000000;
+    long long actual = 0;
+    put_user_wrapper_8s(&actual);
+    LONGS_EQUAL(expected_long_long, actual);
+}
+
+long long expected_unsigned_long_long; /* workaround */
+
+TEST(putuser, put_unsigned_long_long)
+{
+    /* workaround because passing long as
+     * argument is not possible
+     */
+    expected_unsigned_long_long = 2000000000000000000;
+    unsigned long long actual = 0;
+    put_user_wrapper_8u(&actual);
+    LONGS_EQUAL(expected_unsigned_long_long, actual);
+}
+
 int main(int ac, char** av)
 {
 	return CommandLineTestRunner::RunAllTests(ac, av);
