@@ -35,7 +35,7 @@ TEST(putuser, put_char)
 TEST(putuser, put_unsigned_short)
 {
     unsigned short expected = 64000, actual = 0;
-    CHECK(0 == put_user_wrapper_2u(expected, &actual));
+    put_user_wrapper_2u(expected, &actual);
     LONGS_EQUAL(expected, actual);
 }
 

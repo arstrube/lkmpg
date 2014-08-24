@@ -94,9 +94,18 @@ bool try_module_get(struct module *module) { return 0; }
 int _cond_resched(void) { return 0; }
 
 /**
- *  Stubs for put_user(), to be used when running test of kernel
+ *  Stubs for get_user(), to be used when running test of kernel
  *  modules from user space. These macros perform no tests; hence
  *  they never return non-zero. Successful tests involving these
+ *  stubs cannot guarantee correct operation of kernel code!
+ *  These stubs are for x86 32bit Linux. Alternatively, you can
+ *  link the original source, putuser.S.
+ */
+
+
+/**
+ *  Stubs for put_user(), to be used when running test of kernel
+ *  modules from user space. Successful tests involving these
  *  stubs cannot guarantee correct operation of kernel code!
  *  These stubs are for x86 32bit Linux. Alternatively, you can
  *  link the original source, putuser.S.
