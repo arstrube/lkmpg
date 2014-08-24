@@ -16,7 +16,6 @@
 #include <asm/errno.h>
 #include <asm/asm.h>
 
-
 /*
  * __put_user_X
  *
@@ -35,39 +34,6 @@
 		CFI_ENDPROC
 
 .text
-ENTRY(__put_user_1)
-	ENTER
-    cmp TI_addr_limit(%_ASM_BX),%_ASM_CX
-	/* This check always fails in user space */
-	/* jae bad_put_user                      */
-1:	movb %al,(%_ASM_CX)
-	xor %eax,%eax
-	EXIT
-ENDPROC(__put_user_1)
-
-ENTRY(__put_user_2)
-	ENTER
-	mov TI_addr_limit(%_ASM_BX),%_ASM_BX
-	sub $1,%_ASM_BX
-	cmp %_ASM_BX,%_ASM_CX
-	/* This check always fails in user space */
-	/* jae bad_put_user                      */
-2:	movw %ax,(%_ASM_CX)
-	xor %eax,%eax
-	EXIT
-ENDPROC(__put_user_2)
-
-ENTRY(__put_user_4)
-	ENTER
-	mov TI_addr_limit(%_ASM_BX),%_ASM_BX
-	sub $3,%_ASM_BX
-	cmp %_ASM_BX,%_ASM_CX
-	/* This check always fails in user space */
-	/* jae bad_put_user                      */
-3:	movl %eax,(%_ASM_CX)
-	xor %eax,%eax
-	EXIT
-ENDPROC(__put_user_4)
 
 ENTRY(__put_user_8)
 	ENTER
@@ -90,9 +56,9 @@ bad_put_user:
 END(bad_put_user)
 
 .section __ex_table,"a"
-	_ASM_PTR 1b,bad_put_user
-	_ASM_PTR 2b,bad_put_user
-	_ASM_PTR 3b,bad_put_user
+/*	_ASM_PTR 1b,bad_put_user */
+/*	_ASM_PTR 2b,bad_put_user */
+/*	_ASM_PTR 3b,bad_put_user */
 	_ASM_PTR 4b,bad_put_user
 #ifdef CONFIG_X86_32
 	_ASM_PTR 5b,bad_put_user

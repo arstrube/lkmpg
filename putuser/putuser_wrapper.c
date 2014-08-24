@@ -10,6 +10,11 @@
 #include <linux/fs.h>
 #include <asm/uaccess.h>       /* for put_user */
 
+extern int expected_long;
+extern int expected_unsigned_long;
+
+/** wrappers for testing */
+
 int put_user_wrapper_1s(char source, char *target)
 {
     return put_user(source, target);
@@ -23,21 +28,19 @@ int put_user_wrapper_1u(unsigned char source, unsigned char *target)
 int put_user_wrapper_2s(short source, short *target)
 {
     return put_user(source, target);
-
 }
 
 int put_user_wrapper_2u(unsigned short source, unsigned short *target)
 {
     return put_user(source, target);
-
 }
 
-int put_user_wrapper_4s(int source, int *target)
+int put_user_wrapper_4s(long *target)
 {
-    return put_user(source, target);
+    return put_user(expected_long, target);
 }
 
-int put_user_wrapper_4u(unsigned int source, unsigned int *target)
+int put_user_wrapper_4u(unsigned long *target)
 {
-    return put_user(source, target);
+    return put_user(expected_unsigned_long, target);
 }

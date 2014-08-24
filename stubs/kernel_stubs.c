@@ -93,6 +93,37 @@ void module_put(struct module *module) {}
 bool try_module_get(struct module *module) { return 0; }
 int _cond_resched(void) { return 0; }
 
+/**
+ *  Stubs for put_user(), to be used when running test of kernel
+ *  modules from user space. These macros perform no tests; hence
+ *  they never return non-zero. Successful tests involving these
+ *  stubs cannot guarantee correct operation of kernel code!
+ */
+
+notrace void __put_user_1(void)
+{
+    asm(
+        "movb %al,(%ecx)\n"
+	    "xor %eax,%eax\n"
+    );
+}
+
+notrace void __put_user_2(void)
+{
+    asm(
+        "movw %ax,(%ecx)\n"
+	    "xor %eax,%eax\n"
+    );
+}
+
+notrace void __put_user_4(void)
+{
+    asm(
+        "movl %eax,(%ecx)\n"
+	    "xor %eax,%eax\n"
+    );
+}
+
 int __register_chrdev(unsigned int major, unsigned int baseminor,
     unsigned int count, const char *name,
     const struct file_operations *fops)
