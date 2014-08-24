@@ -35,16 +35,18 @@
 #include <asm/asm.h>
 
 	.text
+/*
 ENTRY(__get_user_1)
 	CFI_STARTPROC
-/*	GET_THREAD_INFO(%_ASM_DX)
+	GET_THREAD_INFO(%_ASM_DX)
 	cmp TI_addr_limit(%_ASM_DX),%_ASM_AX
-	jae bad_get_user */
+	jae bad_get_user
 1:	movzb (%_ASM_AX),%edx
 	xor %eax,%eax
 	ret
 	CFI_ENDPROC
 ENDPROC(__get_user_1)
+*/
 
 ENTRY(__get_user_2)
 	CFI_STARTPROC
@@ -96,7 +98,7 @@ bad_get_user:
 END(bad_get_user)
 
 .section __ex_table,"a"
-	_ASM_PTR 1b,bad_get_user
+/*	_ASM_PTR 1b,bad_get_user */
 	_ASM_PTR 2b,bad_get_user
 	_ASM_PTR 3b,bad_get_user
 #ifdef CONFIG_X86_64

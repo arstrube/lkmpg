@@ -102,6 +102,14 @@ int _cond_resched(void) { return 0; }
  *  link the original source, putuser.S.
  */
 
+notrace int __get_user_1(void)
+{
+    asm(
+        "movzb (%eax),%edx\n"
+        "	xor %eax,%eax\n" /* needed? */
+    );
+    return 0;
+}
 
 /**
  *  Stubs for put_user(), to be used when running test of kernel

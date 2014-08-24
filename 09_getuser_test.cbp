@@ -26,24 +26,24 @@
 		<Linker>
 			<Add library="CppUTest" />
 			<Add library="CppUTestExt" />
-			<Add library="putuser/putuser_wrapper.o" />
+			<Add library="getuser/getuser_wrapper.o" />
 			<Add library="stubs/kernel.o" />
 		</Linker>
 		<ExtraCommands>
 			<Add before="cd stubs &amp;&amp; make &amp; cd .." />
-			<Add before="cd putuser &amp;&amp; make &amp;&amp; cd .." />
+			<Add before="cd getuser &amp;&amp; make &amp;&amp; cd .." />
 			<Add after="#./$(PROJECT_NAME)" />
 			<Mode after="always" />
 		</ExtraCommands>
 		<Unit filename="README" />
-		<Unit filename="putuser/Makefile" />
-		<Unit filename="putuser/putuser_wrapper.c">
+		<Unit filename="getuser/Makefile" />
+		<Unit filename="getuser/getuser_wrapper.c">
 			<Option compilerVar="CC" />
 			<Option compile="0" />
 			<Option link="0" />
 		</Unit>
-		<Unit filename="putuser/putuser_wrapper.h" />
-		<Unit filename="putuser_test.cpp" />
+		<Unit filename="getuser/getuser_wrapper.h" />
+		<Unit filename="getuser_test.cpp" />
 		<Unit filename="stubs/Makefile" />
 		<Unit filename="stubs/getuser.S">
 			<Option compile="0" />

@@ -1,5 +1,5 @@
 /**
- *  putuser_test.cpp - Test the put_user() stubs
+ *  getuser_test.cpp - Test the get_user() stubs
  */
 
 #include "CppUTest/CommandLineTestRunner.h"
@@ -8,47 +8,55 @@
 
 extern "C" {
     #include <linux/kern_levels.h> /* Needed for KERN_INFO */
-    #include "putuser/putuser_wrapper.h"
+    #include "getuser/getuser_wrapper.h"
     #include "stubs/kernel_stubs.h"
 }
 
 #define EBUSY -16
 
-TEST_GROUP(putuser)
+TEST_GROUP(getuser)
 {
 };
 
-TEST(putuser, put_unsigned_char)
+unsigned char actual_unsigned_char;
+unsigned char expected_unsigned_char;
+
+TEST(getuser, get_unsigned_char)
 {
-    unsigned char expected = 0xFE, actual = 0x00;
-    put_user_wrapper_1u(expected, &actual);
-    LONGS_EQUAL(expected, actual);
+    expected_unsigned_char = 0xFE;
+    actual_unsigned_char = 0x00;
+    get_user_wrapper_1u();
+    LONGS_EQUAL(expected_unsigned_char, actual_unsigned_char);
 }
 
-TEST(putuser, put_char)
-{
-    char expected = -15, actual = 0;
-    put_user_wrapper_1s(expected, &actual);
-    LONGS_EQUAL(expected, actual);
-}
+char actual_char; /* can't pass as arguments */
+char expected_char;
 
-TEST(putuser, put_unsigned_short)
+TEST(getuser, get_char)
+{
+    expected_char = -15;
+    actual_char = 0;
+    get_user_wrapper_1s();
+    LONGS_EQUAL(expected_char, actual_char);
+}
+#if 0
+TEST(getuser, put_unsigned_short)
 {
     unsigned short expected = 64000, actual = 0;
     CHECK(0 == put_user_wrapper_2u(expected, &actual));
     LONGS_EQUAL(expected, actual);
 }
 
-TEST(putuser, put_short)
+TEST(getuser, put_short)
 {
     short expected = -4578, actual = 0;
     put_user_wrapper_2s(expected, &actual);
     LONGS_EQUAL(expected, actual);
 }
-
+#endif
 unsigned long expected_unsigned_long; /* workaround */
-
-TEST(putuser, put_unsigned_long)
+#if 0
+TEST(getuser, put_unsigned_long)
 {
     /* workaround because passing unsigned long
      * as argument is not possible
@@ -58,10 +66,10 @@ TEST(putuser, put_unsigned_long)
     put_user_wrapper_4u(&actual);
     LONGS_EQUAL(expected_unsigned_long, actual);
 }
-
+#endif
 long expected_long; /* workaround */
-
-TEST(putuser, put_long)
+#if 0
+TEST(getuser, put_long)
 {
     /* workaround because passing long as
      * argument is not possible
@@ -71,10 +79,10 @@ TEST(putuser, put_long)
     put_user_wrapper_4s(&actual);
     LONGS_EQUAL(expected_long, actual);
 }
-
+#endif
 long long expected_long_long; /* workaround */
-
-TEST(putuser, put_long_long)
+#if 0
+TEST(getuser, put_long_long)
 {
     /* workaround because passing long as
      * argument is not possible
@@ -84,10 +92,10 @@ TEST(putuser, put_long_long)
     put_user_wrapper_8s(&actual);
     LONGS_EQUAL(expected_long_long, actual);
 }
-
+#endif
 long long expected_unsigned_long_long; /* workaround */
-
-TEST(putuser, put_unsigned_long_long)
+#if 0
+TEST(getuser, put_unsigned_long_long)
 {
     /* workaround because passing long as
      * argument is not possible
@@ -97,7 +105,7 @@ TEST(putuser, put_unsigned_long_long)
     put_user_wrapper_8u(&actual);
     LONGS_EQUAL(expected_unsigned_long_long, actual);
 }
-
+#endif
 int main(int ac, char** av)
 {
 	return CommandLineTestRunner::RunAllTests(ac, av);
