@@ -47,20 +47,20 @@ ENTRY(__get_user_1)
 	CFI_ENDPROC
 ENDPROC(__get_user_1)
 */
-
+/*
 ENTRY(__get_user_2)
 	CFI_STARTPROC
-/*	add $1,%_ASM_AX
+	add $1,%_ASM_AX
 	jc bad_get_user
 	GET_THREAD_INFO(%_ASM_DX)
 	cmp TI_addr_limit(%_ASM_DX),%_ASM_AX
-	jae bad_get_user */
+	jae bad_get_user
 2:	movzwl -1(%_ASM_AX),%edx
 	xor %eax,%eax
 	ret
 	CFI_ENDPROC
 ENDPROC(__get_user_2)
-
+*/
 ENTRY(__get_user_4)
 	CFI_STARTPROC
 /*	add $3,%_ASM_AX
@@ -99,7 +99,7 @@ END(bad_get_user)
 
 .section __ex_table,"a"
 /*	_ASM_PTR 1b,bad_get_user */
-	_ASM_PTR 2b,bad_get_user
+/*	_ASM_PTR 2b,bad_get_user */
 	_ASM_PTR 3b,bad_get_user
 #ifdef CONFIG_X86_64
 	_ASM_PTR 4b,bad_get_user

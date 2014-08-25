@@ -106,7 +106,15 @@ notrace int __get_user_1(void)
 {
     asm(
         "movzb (%eax),%edx\n"
-        "	xor %eax,%eax\n" /* needed? */
+    );
+    return 0;
+}
+
+notrace int __get_user_2(void)
+{
+    asm(
+        "add $1, %eax\n"
+        "movzx -1(%eax),%edx\n"
     );
     return 0;
 }

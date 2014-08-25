@@ -20,7 +20,6 @@ TEST_GROUP(getuser)
 
 unsigned char actual_unsigned_char;
 unsigned char expected_unsigned_char;
-
 TEST(getuser, get_unsigned_char)
 {
     expected_unsigned_char = 0xFE;
@@ -29,9 +28,8 @@ TEST(getuser, get_unsigned_char)
     LONGS_EQUAL(expected_unsigned_char, actual_unsigned_char);
 }
 
-char actual_char; /* can't pass as arguments */
+char actual_char;
 char expected_char;
-
 TEST(getuser, get_char)
 {
     expected_char = -15;
@@ -39,30 +37,33 @@ TEST(getuser, get_char)
     get_user_wrapper_1s();
     LONGS_EQUAL(expected_char, actual_char);
 }
-#if 0
-TEST(getuser, put_unsigned_short)
+
+unsigned short actual_unsigned_short;
+unsigned short expected_unsigned_short;
+TEST(getuser, get_unsigned_short)
 {
-    unsigned short expected = 64000, actual = 0;
-    CHECK(0 == put_user_wrapper_2u(expected, &actual));
-    LONGS_EQUAL(expected, actual);
+    expected_unsigned_short = 64000;
+    actual_unsigned_short = 0;
+    get_user_wrapper_2u();
+    LONGS_EQUAL(expected_unsigned_short, actual_unsigned_short);
 }
 
-TEST(getuser, put_short)
+short actual_short;
+short expected_short;
+TEST(getuser, get_short)
 {
-    short expected = -4578, actual = 0;
-    put_user_wrapper_2s(expected, &actual);
-    LONGS_EQUAL(expected, actual);
+    expected_short = -4578;
+    actual_short = 0;
+    get_user_wrapper_2s();
+    LONGS_EQUAL(expected_short, actual_short);
 }
-#endif
-unsigned long expected_unsigned_long; /* workaround */
-#if 0
+
+unsigned long actual_unsigned_long;
+unsigned long expected_unsigned_long;
 TEST(getuser, put_unsigned_long)
 {
-    /* workaround because passing unsigned long
-     * as argument is not possible
-     */
     expected_unsigned_long = 200000;
-    unsigned long actual = 0;
+    actual_unsigned_long = 0;
     put_user_wrapper_4u(&actual);
     LONGS_EQUAL(expected_unsigned_long, actual);
 }

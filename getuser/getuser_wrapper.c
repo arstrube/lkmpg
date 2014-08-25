@@ -14,6 +14,10 @@ extern unsigned char actual_unsigned_char;
 extern unsigned char expected_unsigned_char;
 extern char actual_char;
 extern char expected_char;
+extern unsigned short actual_unsigned_short;
+extern unsigned short expected_unsigned_short;
+extern short actual_short;
+extern short expected_short;
 extern int expected_long;
 extern long expected_unsigned_long;
 extern long long expected_long_long;
@@ -30,17 +34,18 @@ int get_user_wrapper_1u()
 {
     return get_user(actual_unsigned_char, &expected_unsigned_char);
 }
+
+int get_user_wrapper_2s()
+{
+    return get_user(actual_short, &expected_short);
+}
+
+
+int get_user_wrapper_2u()
+{
+    return get_user(actual_unsigned_short, &expected_unsigned_short);
+}
 #if 0
-int get_user_wrapper_2s(short source, short *target)
-{
-    return get_user(source, target);
-}
-
-int get_user_wrapper_2u(unsigned short source, unsigned short *target)
-{
-    return get_user(source, target);
-}
-
 int get_user_wrapper_4s(long *target)
 {
     return get_user(expected_long, target);
