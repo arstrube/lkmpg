@@ -18,9 +18,13 @@ extern unsigned short actual_unsigned_short;
 extern unsigned short expected_unsigned_short;
 extern short actual_short;
 extern short expected_short;
-extern int expected_long;
-extern long expected_unsigned_long;
+extern long actual_long;
+extern long expected_long;
+extern unsigned long actual_unsigned_long;
+extern unsigned long expected_unsigned_long;
+extern long long actual_long_long;
 extern long long expected_long_long;
+extern unsigned long long actual_unsigned_long_long;
 extern unsigned long long expected_unsigned_long_long;
 
 /** wrappers for testing */
@@ -45,24 +49,25 @@ int get_user_wrapper_2u()
 {
     return get_user(actual_unsigned_short, &expected_unsigned_short);
 }
+
+int get_user_wrapper_4s()
+{
+    return get_user(actual_long, &expected_long);
+}
+
+int get_user_wrapper_4u()
+{
+    return get_user(actual_unsigned_long, &expected_unsigned_long);
+}
+
 #if 0
-int get_user_wrapper_4s(long *target)
+int get_user_wrapper_8s()
 {
-    return get_user(expected_long, target);
+    return get_user(actual_long_long, &expected_long_long);
 }
 
-int get_user_wrapper_4u(unsigned long *target)
+int get_user_wrapper_8u()
 {
-    return get_user(expected_unsigned_long, target);
-}
-
-int put_user_wrapper_8s(long long *target)
-{
-    return get_user(expected_long_long, target);
-}
-
-int put_user_wrapper_8u(unsigned long long *target)
-{
-    return get_user(expected_unsigned_long_long, target);
+    return get_user(actual_unsigned_long_long, &expected_unsigned_long_long);
 }
 #endif

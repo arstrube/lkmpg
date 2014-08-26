@@ -60,51 +60,44 @@ TEST(getuser, get_short)
 
 unsigned long actual_unsigned_long;
 unsigned long expected_unsigned_long;
-TEST(getuser, put_unsigned_long)
+TEST(getuser, get_unsigned_long)
 {
     expected_unsigned_long = 200000;
     actual_unsigned_long = 0;
-    put_user_wrapper_4u(&actual);
-    LONGS_EQUAL(expected_unsigned_long, actual);
+    get_user_wrapper_4u();
+    LONGS_EQUAL(expected_unsigned_long, actual_unsigned_long);
 }
-#endif
-long expected_long; /* workaround */
-#if 0
-TEST(getuser, put_long)
+
+long actual_long;
+long expected_long;
+TEST(getuser, get_long)
 {
-    /* workaround because passing long as
-     * argument is not possible
-     */
     expected_long = -70000;
-    long actual = 0;
-    put_user_wrapper_4s(&actual);
-    LONGS_EQUAL(expected_long, actual);
+    actual_long = 0;
+    get_user_wrapper_4s();
+    LONGS_EQUAL(expected_long, actual_long);
 }
-#endif
-long long expected_long_long; /* workaround */
+
+long long actual_long_long;
+long long expected_long_long;
 #if 0
-TEST(getuser, put_long_long)
+TEST(getuser, get_long_long)
 {
-    /* workaround because passing long as
-     * argument is not possible
-     */
     expected_long_long = -7000000000000000000;
-    long long actual = 0;
-    put_user_wrapper_8s(&actual);
-    LONGS_EQUAL(expected_long_long, actual);
+    actual_long_long = 0;
+    get_user_wrapper_8s();
+    LONGS_EQUAL(expected_long_long, actual_long_long);
 }
 #endif
-long long expected_unsigned_long_long; /* workaround */
+unsigned long long actual_unsigned_long_long;
+unsigned long long expected_unsigned_long_long;
 #if 0
-TEST(getuser, put_unsigned_long_long)
+TEST(getuser, get_unsigned_long_long)
 {
-    /* workaround because passing long as
-     * argument is not possible
-     */
     expected_unsigned_long_long = 2000000000000000000;
-    unsigned long long actual = 0;
-    put_user_wrapper_8u(&actual);
-    LONGS_EQUAL(expected_unsigned_long_long, actual);
+    actual_unsigned_long_long = 0;
+    get_user_wrapper_8u();
+    LONGS_EQUAL(expected_unsigned_long_long, actual_unsigned_long_long);
 }
 #endif
 int main(int ac, char** av)

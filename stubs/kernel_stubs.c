@@ -102,7 +102,7 @@ int _cond_resched(void) { return 0; }
  *  link the original source, putuser.S.
  */
 
-notrace int __get_user_1(void)
+notrace int __get_user_1()
 {
     asm(
         "movzb (%eax),%edx\n"
@@ -110,14 +110,31 @@ notrace int __get_user_1(void)
     return 0;
 }
 
-notrace int __get_user_2(void)
+notrace int __get_user_2()
 {
     asm(
-        "add $1, %eax\n"
-        "movzx -1(%eax),%edx\n"
+        "movzwl (%eax),%edx\n"
     );
     return 0;
 }
+
+notrace int __get_user_4()
+{
+    asm(
+        "mov (%eax),%edx\n"
+    );
+    return 0;
+}
+
+/*
+notrace int __get_user_8()
+{
+    asm(
+        "movq (%eax), %edx\n"
+    );
+    return 0;
+}
+*/
 
 /**
  *  Stubs for put_user(), to be used when running test of kernel
