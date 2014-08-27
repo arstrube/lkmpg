@@ -1,7 +1,7 @@
 EXTRA_CFLAGS += -g -Werror -Wextra -Wno-unused-parameter -Wno-declaration-after-statement
 
 obj-m += kernel.o
-kernel-objs := getuser.o kernel_stubs.o
+kernel-objs := kernel_stubs.o
 
 
 all:

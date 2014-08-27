@@ -45,10 +45,6 @@
 		<Unit filename="getuser/getuser_wrapper.h" />
 		<Unit filename="getuser_test.cpp" />
 		<Unit filename="stubs/Makefile" />
-		<Unit filename="stubs/getuser.S">
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
 		<Unit filename="stubs/kernel_stubs.c">
 			<Option compilerVar="CC" />
 			<Option compile="0" />

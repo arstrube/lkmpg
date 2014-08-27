@@ -77,10 +77,9 @@ TEST(getuser, get_long)
     get_user_wrapper_4s();
     LONGS_EQUAL(expected_long, actual_long);
 }
-
+#if 0
 long long actual_long_long;
 long long expected_long_long;
-#if 0
 TEST(getuser, get_long_long)
 {
     expected_long_long = -7000000000000000000;
@@ -88,10 +87,10 @@ TEST(getuser, get_long_long)
     get_user_wrapper_8s();
     LONGS_EQUAL(expected_long_long, actual_long_long);
 }
-#endif
+
 unsigned long long actual_unsigned_long_long;
 unsigned long long expected_unsigned_long_long;
-#if 0
+
 TEST(getuser, get_unsigned_long_long)
 {
     expected_unsigned_long_long = 2000000000000000000;

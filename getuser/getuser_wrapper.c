@@ -59,7 +59,6 @@ int get_user_wrapper_4u()
 {
     return get_user(actual_unsigned_long, &expected_unsigned_long);
 }
-
 #if 0
 int get_user_wrapper_8s()
 {

@@ -113,7 +113,8 @@ notrace int __get_user_1()
 notrace int __get_user_2()
 {
     asm(
-        "movzwl (%eax),%edx\n"
+        "add $1, %eax\n"
+        "movzwl -1(%eax),%edx\n"
     );
     return 0;
 }
